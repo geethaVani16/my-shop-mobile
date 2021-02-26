@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-import { View, StyleSheet, Text, ScrollView, TextInput, Platform } from "react-native"
+import { View, StyleSheet, Text, ScrollView, TextInput, Platform, Alert } from "react-native"
 import { useDispatch, useSelector } from 'react-redux'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import CustomHeaderButton from '../../components/shop/UI/headerButton'
@@ -17,17 +17,17 @@ const EditProductScreen = props => {
     const [imageUrl, setImageUrl] = useState(editedProduct ? editedProduct.imageUrl : '')
     const [price, setPrice] = useState(editedProduct ? editedProduct.price : '')
     const [description, setDescription] = useState(editedProduct ? editedProduct.description : '')
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
 
     const submitHandler = useCallback(() => {
-       if(editedProduct) {
-           dispatch(updateProduct(prodId,title,description,imageUrl))
-       } else {
-           console.log(title,description,imageUrl,+price)
-           dispatch(createProduct(title,description,imageUrl,+price))
-       }
-    }, [dispatch,prodId,title,description,imageUrl]);
-
+        if (editedProduct) {
+            dispatch(updateProduct(prodId, title, description, imageUrl))
+        } else {
+            console.log(title, description, imageUrl, +price)
+            dispatch(createProduct(title, description, imageUrl, +price))
+        }
+        props.navigation.goBack();
+    }, [dispatch, prodId, title, description, imageUrl]);
 
 
     useEffect(() => {

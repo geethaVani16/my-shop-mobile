@@ -8,18 +8,21 @@ import CustomHeaderButton from '../../components/shop/UI/headerButton'
 import Colors from '../../constants/Colors'
 
 
-const onSelectItemHandler = (id, title) => {
-    props.navigation.navigate('ProductDetail', {
-        productId: id,
-        productTitle: title
-    }
-    )
-}
+
 
 
 const ProductsOverViewScreen = props => {
     const products = useSelector(state => state.products.availableProducts)
     const dispatch = useDispatch()
+
+    
+    const onSelectItemHandler = (id, title) => {
+        props.navigation.navigate('ProductDetail', {
+            productId: id,
+            productTitle: title
+        }
+        )
+    }
     return (
         <View style={styles.container}>
             <FlatList
