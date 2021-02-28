@@ -59,7 +59,7 @@ export default (state = intialState, action) => {
                 userProducts: updatedUserProducts
             };
         case SET_PRODUCTS:
-            console.log(action.products,"action.products")
+            // console.log(action.products,"action.products")
             return {
                 availableProducts: action.products,
                 userProducts: action.products.filter(prod => prod.ownerId === 'u1')
